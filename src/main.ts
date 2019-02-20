@@ -14,6 +14,11 @@ import { HgContentProvider } from './contentProvider';
 import * as nls from 'vscode-nls';
 import typedConfig from './config';
 
+
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+import * as vscode from 'vscode';
+
 const localize = nls.config(process.env.VSCODE_NLS_CONFIG)();
 
 async function init(context: ExtensionContext, disposables: Disposable[]): Promise<void> {

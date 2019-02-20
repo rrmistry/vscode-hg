@@ -35,8 +35,8 @@
 
 # Feedback & Contributing
 
- * Please report any bugs, suggestions or documentation requests via the [Github issues](https://github.com/mrcrowl/vscode-hg/issues) (_yes_, I see the irony).
- * Feel free to submit [pull requests](https://github.com/mrcrowl/vscode-hg/pulls).
+ * Please report any bugs, suggestions or documentation requests via the [Github issues](https://github.com/rrmistry/vscode-hg/issues) (_yes_, I see the irony).
+ * Feel free to submit [pull requests](https://github.com/rrmistry/vscode-hg/pulls).
 
 
 ## Initialize a new repo

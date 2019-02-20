@@ -181,10 +181,12 @@ export class HgFinder {
 	}
 
 	private findHgWin32(): Promise<IHg> {
-		return this.findMercurialWin32(process.env['ProgramW6432'])
-			.then(undefined, () => this.findMercurialWin32(process.env['ProgramFiles(x86)']))
-			.then(undefined, () => this.findTortoiseHgWin32(process.env['ProgramW6432']))
-			.then(undefined, () => this.findTortoiseHgWin32(process.env['ProgramFiles(x86)']))
+        const ProgramW6432 = process.env['ProgramW6432'];
+        const ProgramFiles_x86 = process.env['ProgramFiles(x86)'];
+        return this.findMercurialWin32(ProgramW6432 == undefined ? "" : ProgramW6432)
+            .then(undefined, () => this.findMercurialWin32(ProgramFiles_x86 == undefined ? "" : ProgramFiles_x86))
+            .then(undefined, () => this.findTortoiseHgWin32(ProgramW6432 == undefined ? "" : ProgramW6432))
+            .then(undefined, () => this.findTortoiseHgWin32(ProgramFiles_x86 == undefined ? "" : ProgramFiles_x86))
 			.then(undefined, () => this.findSpecificHg('hg'))
 	}
 

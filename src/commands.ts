@@ -73,6 +73,7 @@ export class CommandCenter {
 
 	@command('hg.refresh', { repository: true })
 	async refresh(repository: Repository): Promise<void> {
+        vscode.window.showInformationMessage('Hello World!');
 		await repository.status();
 	}
 
@@ -277,7 +278,22 @@ export class CommandCenter {
 		}
 
 		return this.openFile(...<Resource[]>resources);
-	}
+    }
+
+    @command('hg.openFilesOnRemote', { repository: true })
+    async openFilesOnRemote(repository: Repository, ...resources: (Resource | SourceControlResourceGroup)[]): Promise<void> {
+		const paths = await repository.getPaths();
+
+		if (paths.length === 0) {
+			const action = await interaction.warnNoPaths(false);
+			if (action === DefaultRepoNotConfiguredAction.OpenHGRC) {
+				commands.executeCommand("hg.openhgrc");
+			}
+			return;
+		}
+
+        return this.openFile(...<Resource[]>resources);
+    }
 
 	@command('hg.openFile')
 	async openFile(...resources: Resource[]): Promise<void> {

@@ -1,20 +1,20 @@
 {
   "name": "hg",
-  "publisher": "mrcrowl",
+  "publisher": "rrmistry",
   "displayName": "Hg",
   "description": "Integrated Mercurial source control",
   "galleryBanner": {
     "color": "#999999",
     "theme": "dark"
   },
-  "homepage": "https://github.com/mrcrowl/vscode-hg/blob/master/README.md",
+  "homepage": "https://github.com/rrmistry/vscode-hg/blob/master/README.md",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrcrowl/vscode-hg.git"
+    "url": "https://github.com/rrmistry/vscode-hg.git"
   },
   "bugs": {
-    "url": "https://github.com/mrcrowl/vscode-hg/issues"
+    "url": "https://github.com/rrmistry/vscode-hg/issues"
   },
   "version": "1.3.0",
   "engines": {
@@ -211,6 +211,11 @@
         "category": "Hg"
       },
       {
+        "command": "hg.openFilesOnRemote",
+        "title": "%command.openFilesOnRemote%",
+        "category": "Hg"
+      },
+      {
         "command": "hg.openFileFromUri",
         "title": "%command.openFile%",
         "category": "Hg",
@@ -342,6 +347,10 @@
         },
         {
           "command": "hg.openFiles",
+          "when": "false"
+        },
+        {
+          "command": "hg.openFilesOnRemote",
           "when": "false"
         },
         {
@@ -579,6 +588,11 @@
           "group": "navigation"
         },
         {
+          "command": "hg.openFilesOnRemote",
+          "when": "config.hg.enabled && scmProvider == hg",
+          "group": "navigation"
+        },
+        {
           "command": "hg.openChange",
           "when": "config.hg.enabled && scmProvider == hg && scmResourceGroup != untracked",
           "group": "navigation"
@@ -662,6 +676,11 @@
         },
         {
           "command": "hg.openFiles",
+          "when": "config.hg.enabled && scmProvider == hg",
+          "group": "navigation"
+        },
+        {
+          "command": "hg.openFilesOnRemote",
           "when": "config.hg.enabled && scmProvider == hg",
           "group": "navigation"
         },
@@ -799,6 +818,7 @@
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
     "compile": "tsc -watch -p ./",
+    "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "dependencies": {
